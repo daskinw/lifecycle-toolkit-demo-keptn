@@ -1,8 +1,7 @@
 ---
-date: 2024-03-14
-authors: [ pmig ]
-description: >
-  In this blog post you will learn how to install and update Keptn via the Glasskube Package Manager.
+date: 2024-03-14T00:00:00.000Z
+authors:
+  - pmig
 categories:
   - SRE
   - Glasskube
@@ -10,55 +9,36 @@ categories:
   - Upgrade
 comments: true
 slug: install-keptn-with-glasskube
+description: >-
+  In this blog post you will learn how to install and update Keptn via the
+  Glasskube Package Manager.
 ---
 
 # Keptn is now officially available via the Glasskube Package Manager for Kubernetes
 
-We are happy to announce that Keptn is now officially available via the Glasskube Package Manager to bring Keptn
-to even more users.
+We are happy to announce that Keptn is now officially available via the Glasskube Package Manager to bring Keptn to even more users.
 
-Installing packages for Kubernetes clusters is one of the most pressing issues in the Cloud Native community.
-There are still some unaddressed challenges like managing dependencies and streamlining updates across multiple
-packages.
+Installing packages for Kubernetes clusters is one of the most pressing issues in the Cloud Native community. There are still some unaddressed challenges like managing dependencies and streamlining updates across multiple packages.
 
 In this article we give an overview about Glasskube, Keptn and how the installation works.
 
-<!-- more -->
-
 ## What is Glasskube?
 
-[Glasskube](https://glasskube.dev) is the next generation package manager for Kubernetes and part of the CNCF
-landscape.
+[Glasskube](https://glasskube.dev) is the next generation package manager for Kubernetes and part of the CNCF landscape.
 
-Inspired by traditional package managers like `brew`, `apt` or `dnf`, Glasskube allows users to easily find, install
-and update packages for Kubernetes.
-Glasskube packages are dependency aware, so if multiple packages require for
-example cert-manager, it only gets installed once in the recommended namespace and can then be utilized by multiple packages.
-Glasskube not only provides a streamlined CLI experience, but also a simple UI for managing Kubernetes packages.
-Glasskube itself is designed as a Cloud Native application and every installed package is represented by a
-Custom Resource.
-This comes in handy if packages and Glasskube itself should be managed via a GitOps approach.
+Inspired by traditional package managers like `brew`, `apt` or `dnf`, Glasskube allows users to easily find, install and update packages for Kubernetes. Glasskube packages are dependency aware, so if multiple packages require for example cert-manager, it only gets installed once in the recommended namespace and can then be utilized by multiple packages. Glasskube not only provides a streamlined CLI experience, but also a simple UI for managing Kubernetes packages. Glasskube itself is designed as a Cloud Native application and every installed package is represented by a Custom Resource. This comes in handy if packages and Glasskube itself should be managed via a GitOps approach.
 
-[`glasskube/glasskube`](https://github.com/glasskube/glasskube/) is in active development, with _good first issues_
-available for new contributors.
+[`glasskube/glasskube`](https://github.com/glasskube/glasskube/) is in active development, with _good first issues_ available for new contributors.
 
 ## What is Keptn?
 
-[Keptn](https://keptn.sh/) is a CNCF project for continuous delivery and automated operations.
-It helps developers and platform engineering teams automate deployment, monitoring, and management of applications
-running in cloud environments.
-Keptn works with standard deployment software like ArgoCD or Flux, consolidating metrics, observability, and analysis
-for all the microservices that comprise your deployed software as well as providing checks and executables that can
-run before and/or after the deployment.
+[Keptn](https://keptn.sh/) is a CNCF project for continuous delivery and automated operations. It helps developers and platform engineering teams automate deployment, monitoring, and management of applications running in cloud environments. Keptn works with standard deployment software like ArgoCD or Flux, consolidating metrics, observability, and analysis for all the microservices that comprise your deployed software as well as providing checks and executables that can run before and/or after the deployment.
 
 ## Keptn package on Glasskube
 
-The supported Keptn versions and packages can be found in the Glasskube package repository:
-[`glasskube/packages/keptn`](https://github.com/glasskube/packages/tree/main/packages/keptn)
+The supported Keptn versions and packages can be found in the Glasskube package repository: [`glasskube/packages/keptn`](https://github.com/glasskube/packages/tree/main/packages/keptn)
 
-As Keptn requires a certificate in order to interact with the Kubernetes API it can either make use of cert-manager.io
-or it alternatively packages its own certificate manager.
-In the Glasskube package yaml there is a dependency on `cert-manager` configured:
+As Keptn requires a certificate in order to interact with the Kubernetes API it can either make use of cert-manager.io or it alternatively packages its own certificate manager. In the Glasskube package yaml there is a dependency on `cert-manager` configured:
 
 ```yaml
 name: "keptn"
@@ -79,15 +59,13 @@ dependencies:
 
 ### Install Glasskube
 
-If you haven't already installed the `glasskube` client you can install it either via `brew` or follow the
-[Glasskube Documentation](https://glasskube.dev/docs/getting-started/install/).
+If you haven't already installed the `glasskube` client you can install it either via `brew` or follow the [Glasskube Documentation](https://glasskube.dev/docs/getting-started/install/).
 
 ```shell
 brew install glasskube/tap/glasskube
 ```
 
-After installing Glasskube, you can bootstrap Glasskube with `glasskube bootstrap` or perform an automatic
-bootstrap with your first package installation.
+After installing Glasskube, you can bootstrap Glasskube with `glasskube bootstrap` or perform an automatic bootstrap with your first package installation.
 
 ### Keptn installation with the Glasskube CLI
 
@@ -119,11 +97,11 @@ glasskube serve
 
 Your default web browser will open on [http://localhost:8580](http://localhost:8580).
 
-![Glasskube overview](./../install-keptn-with-glasskube/glasskube.png "Glasskube overview")
+![Glasskube overview](../install-keptn-with-glasskube/glasskube.png)
 
 Where you just need to click the "Install" Button for Keptn.
 
-![Glasskube keptn](./../install-keptn-with-glasskube/glasskube-keptn.png "Keptn installation via Glasskube")
+![Glasskube keptn](../install-keptn-with-glasskube/glasskube-keptn.png)
 
 You can also choose if you want to enable automatic updates or install a specific version.
 
@@ -131,7 +109,7 @@ You can also choose if you want to enable automatic updates or install a specifi
 
 After some time the Glasskube GUI automatically updates the state of the installed package.
 
-![Glasskube Keptn success](./../install-keptn-with-glasskube/glasskube-keptn-success.png "Keptn installation success")
+![Glasskube Keptn success](../install-keptn-with-glasskube/glasskube-keptn-success.png)
 
 After the installation you can validate that all components have been installed executing:
 
@@ -141,12 +119,11 @@ kubectl get all -n keptn-system
 
 ## Summary
 
-Keptn is now officially available via the Glasskube Package Manager and can easily be installed and updated via a CLI,
-GUI or GitOps solutions like ArgoCD or FluxCD.
+Keptn is now officially available via the Glasskube Package Manager and can easily be installed and updated via a CLI, GUI or GitOps solutions like ArgoCD or FluxCD.
 
 ## Useful links
 
-- <https://glasskube.dev/>
-- <https://helm.sh/>
-- <https://github.com/glasskube/glasskube/>
-- <https://github.com/glasskube/packages/>
+* [https://glasskube.dev/](https://glasskube.dev/)
+* [https://helm.sh/](https://helm.sh/)
+* [https://github.com/glasskube/glasskube/](https://github.com/glasskube/glasskube/)
+* [https://github.com/glasskube/packages/](https://github.com/glasskube/packages/)
